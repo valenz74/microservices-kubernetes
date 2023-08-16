@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: books
+  name: books
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: books
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: books
+    spec:
+      containers:
+        - image: jgavirias13/booksapp:v4
+          name: books
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always

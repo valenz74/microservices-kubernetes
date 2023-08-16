@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: recommendations
+  name: recommendations
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendations
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: recommendations
+    spec:
+      containers:
+        - image: jgavirias13/recommendationsapp:v2
+          name: recommendations
+          ports:
+            - containerPort: 8081
+              hostPort: 8081
+              protocol: TCP
+      restartPolicy: Always

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - image: jgavirias13/adminapp:v1
+          name: admin
+          ports:
+            - containerPort: 8083
+              hostPort: 8083
+              protocol: TCP
+          resources: {}
+      restartPolicy: Always
+status: {}
